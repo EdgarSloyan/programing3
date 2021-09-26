@@ -1,23 +1,16 @@
-var matrix = [];
-var grassArr = [];
-var grassEaterArr = [];
-var predatorArr = [];
-var eaterArr = [];
-var mulerArr = [];
-
 var side = 10;
 
 
 function setup() {
+    // frameRate(6);
+    createCanvas(matrix[0].length * side, matrix.length * side);
+    background('#acacac');
     for (var y = 0; y < 50; y++) {
         matrix[y] = [];
         for (var x = 0; x < 50; x++) {
             matrix[y][x] = random([0,1,1,1,2,3,4,5]);
         }
     }
-    frameRate(6);
-    createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {

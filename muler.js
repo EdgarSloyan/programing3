@@ -1,4 +1,6 @@
-class Muler {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Muler {
     constructor(x, y, index) {
         super(x, y, index);
     }

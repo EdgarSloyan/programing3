@@ -1,4 +1,6 @@
-class Eater{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Eater{
 	constructor(x, y, index) {
         super(x, y, index);
         this.energy = 2;
