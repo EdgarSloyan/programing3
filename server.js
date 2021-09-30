@@ -1,6 +1,8 @@
 //! Requiring modules  --  START
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
+var Predator = require("./modules/Predator.js");
+var Eater = require("./modules/Eater.js");
 let random = require('./random');
 //! Requiring modules  --  END
 
@@ -8,15 +10,18 @@ let random = require('./random');
 //! Setting global arrays  --  START
 grassArr = [];
 grassEaterArr = [];
+PredatorArr = [];
+EaterArr = [];
 matrix = [];
 grassHashiv = 0;
+grassEaterHashiv = 0;
 //! Setting global arrays  -- END
 
 
 
 
 //! Creating MATRIX -- START
-function matrixGenerator(matrixSize, grass, grassEater, grassEaterEater, waterArr, fireArr) {
+function matrixGenerator(matrixSize, grass, grassEater, Predator, Eater, fireArr) {
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = [];
         for (let o = 0; o < matrixSize; o++) {
@@ -33,12 +38,12 @@ function matrixGenerator(matrixSize, grass, grassEater, grassEaterEater, waterAr
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 2;
     }
-    for (let i = 0; i < grassEaterEater; i++) {
+    for (let i = 0; i < Predator; i++) {
         let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 3;
     }
-    for (let i = 0; i < waterArr; i++) {
+    for (let i = 0; i < Eater; i++) {
         let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 4;
@@ -49,7 +54,7 @@ function matrixGenerator(matrixSize, grass, grassEater, grassEaterEater, waterAr
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 1, 1);
+matrixGenerator(20, 1, 2, 2, 2);
 //! Creating MATRIX -- END
 
 
@@ -74,6 +79,7 @@ function creatingObjects() {
             if (matrix[y][x] == 2) {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
+                grassEaterHashiv++;
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
@@ -96,10 +102,12 @@ function game() {
         }
     }
 
+
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassCounter: grassHashiv
+        grassCounter: grassHashiv,
+        grassEaterCounter: grassEaterHashiv
     }
 
     //! Send data over the socket to clients who listens "data"

@@ -17,13 +17,13 @@ function setup() {
     function drawCreatures(data) {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
-        grassCountElement.innerText = data.grassCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
         background('#acacac');
         //! Draw grassCount and grassEaterCount to HTML (use DOM objects to update information, yes, and use .innerText <- function)
-
+        grassCountElement.innerText = data.grassCounter;
+        grassEaterCountElement.innerText = data.grassEaterHashiv;
         //! Drawing and coloring RECTs
         for (var i = 0; i < matrix.length; i++) {
             for (var j = 0; j < matrix[i].length; j++) {
