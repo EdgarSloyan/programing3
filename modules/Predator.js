@@ -86,9 +86,9 @@ module.exports = class Predator extends LiveForm {
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in PredatorArr) {
-            if (PredatorArr[i].x == this.x && PredatorArr[i].y == this.y) {
-                PredtorArr.splice(i, 1)
+        for (let i in predatorArr) {
+            if (predatorArr[i].x == this.x && predatorArr[i].y == this.y) {
+                predatorArr.splice(i, 1)
             }
         }
     }

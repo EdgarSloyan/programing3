@@ -33,7 +33,7 @@ module.exports = class Eater extends LiveForm{
             let y = newCell[1];
             matrix[y][x] = 4;
             let Eater = new Eater(x, y);
-            EaterArr.push(Eater);
+            eaterArr.push(Eater);
             this.life = 2;
         }
     }
@@ -67,9 +67,9 @@ module.exports = class Eater extends LiveForm{
             matrix[y][x] = 2;
             matrix[this.y][this.x] = 0;
 
-            for (let i in PredatorArr) {
-                if (PredatorArr[i].x == x && PredatorArr[i].y == y) {
-                    PredatorArr.splice(i, 1)
+            for (let i in predatorArr) {
+                if (predatorArr[i].x == x && predatorArr[i].y == y) {
+                    predatorArr.splice(i, 1)
                 }
             }
             this.x = x;
@@ -86,9 +86,9 @@ module.exports = class Eater extends LiveForm{
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in EaterArr) {
-            if (EaterArr[i].x == this.x && EaterArr[i].y == this.y) {
-                EaterArr.splice(i, 1)
+        for (let i in eaterArr) {
+            if (eaterArr[i].x == this.x && eaterArr[i].y == this.y) {
+                eaterArr.splice(i, 1)
             }
         }
     }
