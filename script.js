@@ -1,8 +1,9 @@
+
+var socket = io();
 function setup() {
 
-    var socket = io();
 
-    var side = 30;
+    var side = 10;
 
     var matrix = [];
     let weath = 'summer'
@@ -75,4 +76,4 @@ function addGrass() {
 }
 function addGrassEater() {
     socket.emit("add grassEater")
-} 
+}   

@@ -1,10 +1,10 @@
 var LiveForm = require("./LiveForm");
 var random = require("../random.js");
 
-module.exports = class Eater extends LiveForm{
-	constructor(x, y, index) {
-        super(x, y, index);
-        this.life = 2;
+module.exports = class Eater extends LiveForm {
+    constructor(x, y) {
+        super(x, y);
+        this.life = 6;
     }
     chooseCell(character) {
         this.getNewCoordinates();
@@ -28,18 +28,21 @@ module.exports = class Eater extends LiveForm{
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
 
-        if (newCell && this.energy >= 5) {
+        if (newCell && this.life >= 12) {
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 4;
-            let Eater = new Eater(x, y);
-            eaterArr.push(Eater);
+            this.y = y;
+            this.x = x;
+            let eat = new Eater(x, y);
+            eaterArr.push(eat);
         }
     }
     move() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
+        this.life--;
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];
@@ -48,13 +51,14 @@ module.exports = class Eater extends LiveForm{
             this.y = y;
             this.x = x;
 
-            this.life--;
 
         }
+        if (this.life < 0) {
             this.die();
+        }
     }
     eat() {
-        let emptyCells = this.chooseCell(1);
+        let emptyCells = this.chooseCell(3);
         let newCell = random(emptyCells);
 
         if (newCell) {
@@ -71,21 +75,23 @@ module.exports = class Eater extends LiveForm{
                     predatorArr.splice(i, 1)
                 }
             }
+            if(this.life >= 12 ) {
                 this.mul();
+            }
         }
         else {
             this.move()
         }
     }
     die() {
-        if (this.life <= 0) {
+        matrix[this.y][this.x] = 0;
+        // if (this.life <= 0) {
             for (var i in eaterArr) {
                 if (this.x == eaterArr[i].x && this.y == eaterArr[i].y) {
                     eaterArr.splice(i, 1);
-                    matrix[this.y][this.x] = 0;
-                    break;
+                    // break;
                 }
-            }
+            // }
         }
     }
 }

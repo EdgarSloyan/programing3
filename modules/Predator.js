@@ -32,9 +32,10 @@ module.exports = class Predator extends LiveForm {
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 3;
-
-            let Predator = new Predator(x, y);
-            PredatorArr.push(Predator);
+            this.y = y;
+            this.x = x;
+            let pr = new Predator(x, y);
+            PredatorArr.push(pr);
         }
     }
     move() {
@@ -87,7 +88,7 @@ module.exports = class Predator extends LiveForm {
                 if (this.x == predatorArr[i].x && this.y == predatorArr[i].y) {
                     predatorArr.splice(i, 1);
                     matrix[this.y][this.x] = 0;
-                    break;
+                    // break;
                 }
             }
         }

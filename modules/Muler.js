@@ -3,9 +3,7 @@ var random = require("../random.js");
 
 
 module.exports = class Muler extends LiveForm  {
-    constructor(x, y, index) {
-        super(x, y, index);
-    }
+
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);

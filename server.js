@@ -21,7 +21,7 @@ weath = "winter";
 //! Setting global arrays  -- END
 
 
- 
+
 
 //! Creating MATRIX -- START
 function matrixGenerator(matrixSize, grass, grassEater, Predator, Eater, Muler) {
@@ -57,7 +57,7 @@ function matrixGenerator(matrixSize, grass, grassEater, Predator, Eater, Muler) 
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 2, 5, 5, 5, 5);
+matrixGenerator(20, 10, 7, 5, 10, 1);
 //! Creating MATRIX -- END
 
 
@@ -88,7 +88,8 @@ function creatingObjects() {
             }
             else if (matrix[y][x] == 3) {
                 var predator = new Predator(x, y);
-                predatorArr.push(predator);            }
+                predatorArr.push(predator);
+            }
             else if (matrix[y][x] == 4) {
                 var eater = new Eater(x, y);
                 eaterArr.push(eater);
@@ -144,43 +145,44 @@ function game() {
     io.sockets.emit("data", sendData);
 }
 
+setInterval(game, 1000)
+
 function kill() {
     grassArr = [];
-    grassEaterArr = []
+    grassEaterArr = [];
+    predatorArr = [];
+    eaterArr = [];
+    mulerArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;
         }
     }
-    io.sockets.emit("send matrix", matrix);
 }
 
 
 function addGrass() {
     for (var i = 0; i < 7; i++) {
-    var x = Math.floor(Math.random() * matrix[0].length)
-    var y = Math.floor(Math.random() * matrix.length)
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 1
             var gr = new Grass(x, y)
             grassArr.push(gr)
         }
     }
-    io.sockets.emit("send matrix", matrix);
 }
 function addGrassEater() {
-    for (var i = 0; i < 7; i++) {   
-    var x = Math.floor(Math.random() * matrix[0].length)
-    var y = Math.floor(Math.random() * matrix.length)
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2
             grassEaterArr.push(new GrassEater(x, y))
         }
     }
-    io.sockets.emit("send matrix", matrix);
 }
 
-setInterval(game, 1000)
 
 function weather() {
     if (weath == "winter") {
@@ -201,7 +203,7 @@ setInterval(weather, 5000);
 
 
 io.on('connection', function (socket) {
-    creatingObjects();
+    // creatingObjects();
     socket.on("kill", kill);
     socket.on("add grass", addGrass);
     socket.on("add grassEater", addGrassEater);
