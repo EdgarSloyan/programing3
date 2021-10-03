@@ -1,15 +1,25 @@
 {
   "name": "programing3",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdgarSloyan/programing3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EdgarSloyan/programing3/issues"
+  },
+  "homepage": "https://github.com/EdgarSloyan/programing3#readme",
+  "description": ""
 }

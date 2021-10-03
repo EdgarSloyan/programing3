@@ -28,23 +28,16 @@ module.exports = class Muler extends LiveForm  {
         let newCell = random(emptyCells);
 
         if (newCell) {
-
-            this.life++;
             let x = newCell[0];
             let y = newCell[1];
-
-            matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
 
-            for (let i in grassEaterArr) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
+            for (var i in predatorArr) {
+                if (x == predatorArr[i].x && y == predatorArr[i].y) {
+                    predatorArr.splice(i, 1);
+                    break;
                 }
             }
-            this.x = x;
-            this.y = y;
-
-
         }
     }
 }

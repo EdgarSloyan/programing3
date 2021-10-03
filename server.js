@@ -21,7 +21,7 @@ weath = "winter";
 //! Setting global arrays  -- END
 
 
-
+ 
 
 //! Creating MATRIX -- START
 function matrixGenerator(matrixSize, grass, grassEater, Predator, Eater, Muler) {
@@ -57,7 +57,7 @@ function matrixGenerator(matrixSize, grass, grassEater, Predator, Eater, Muler) 
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 1, 2, 2, 2, 2);
+matrixGenerator(20, 2, 5, 5, 5, 5);
 //! Creating MATRIX -- END
 
 
@@ -67,7 +67,6 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var fs = require("fs");
 app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
@@ -163,7 +162,7 @@ function addGrass() {
     var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 1
-            var gr = new Grass(x, y, 1)
+            var gr = new Grass(x, y)
             grassArr.push(gr)
         }
     }
@@ -175,7 +174,7 @@ function addGrassEater() {
     var y = Math.floor(Math.random() * matrix.length)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2
-            grassEaterArr.push(new GrassEater(x, y, 2))
+            grassEaterArr.push(new GrassEater(x, y))
         }
     }
     io.sockets.emit("send matrix", matrix);

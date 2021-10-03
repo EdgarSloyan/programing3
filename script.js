@@ -75,4 +75,4 @@ function addGrass() {
 }
 function addGrassEater() {
     socket.emit("add grassEater")
-}
+} 

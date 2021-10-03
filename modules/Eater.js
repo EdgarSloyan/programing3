@@ -34,11 +34,9 @@ module.exports = class Eater extends LiveForm{
             matrix[y][x] = 4;
             let Eater = new Eater(x, y);
             eaterArr.push(Eater);
-            this.life = 2;
         }
     }
     move() {
-        this.life--;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
@@ -49,10 +47,11 @@ module.exports = class Eater extends LiveForm{
             matrix[this.y][this.x] = 0;
             this.y = y;
             this.x = x;
+
+            this.life--;
+
         }
-        if (this.life < 0) {
             this.die();
-        }
     }
     eat() {
         let emptyCells = this.chooseCell(1);
@@ -64,7 +63,7 @@ module.exports = class Eater extends LiveForm{
             let x = newCell[0];
             let y = newCell[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
 
             for (let i in predatorArr) {
@@ -72,23 +71,20 @@ module.exports = class Eater extends LiveForm{
                     predatorArr.splice(i, 1)
                 }
             }
-            this.x = x;
-            this.y = y;
-
-            if (this.life >= 13) {
                 this.mul();
-            }
         }
         else {
             this.move()
         }
     }
     die() {
-        matrix[this.y][this.x] = 0;
-
-        for (let i in eaterArr) {
-            if (eaterArr[i].x == this.x && eaterArr[i].y == this.y) {
-                eaterArr.splice(i, 1)
+        if (this.life <= 0) {
+            for (var i in eaterArr) {
+                if (this.x == eaterArr[i].x && this.y == eaterArr[i].y) {
+                    eaterArr.splice(i, 1);
+                    matrix[this.y][this.x] = 0;
+                    break;
+                }
             }
         }
     }
