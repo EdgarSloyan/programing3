@@ -182,6 +182,36 @@ function addGrassEater() {
         }
     }
 }
+function addPredator() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+            predatorArr.push(new Predator(x, y))
+        }
+    }
+}
+function addEater() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            eaterArr.push(new Eater(x, y))
+        }
+    }
+}
+function addMuler() {
+    for (var i = 0; i < 7; i++) {
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+            mulerArr.push(new Muler(x, y))
+        }
+    }
+}
 
 
 function weather() {
@@ -207,4 +237,7 @@ io.on('connection', function (socket) {
     socket.on("kill", kill);
     socket.on("add grass", addGrass);
     socket.on("add grassEater", addGrassEater);
+    socket.on("add Predator", addPredator);
+    socket.on("add Eater", addEater);
+    socket.on("add Muler", addMuler);
 });

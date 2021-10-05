@@ -25,6 +25,7 @@ module.exports = class Eater extends LiveForm {
     }
 
     mul() {
+        this.life++;
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
 
@@ -39,10 +40,10 @@ module.exports = class Eater extends LiveForm {
         }
     }
     move() {
+        this.life--;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
-        this.life--;
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];
@@ -70,12 +71,17 @@ module.exports = class Eater extends LiveForm {
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
 
+            this.x = x;
+            this.y = y;
+
+            this.life++;
+
             for (let i in predatorArr) {
                 if (predatorArr[i].x == x && predatorArr[i].y == y) {
                     predatorArr.splice(i, 1)
                 }
             }
-            if(this.life >= 12 ) {
+            if (this.life >= 12) {
                 this.mul();
             }
         }
@@ -86,11 +92,11 @@ module.exports = class Eater extends LiveForm {
     die() {
         matrix[this.y][this.x] = 0;
         // if (this.life <= 0) {
-            for (var i in eaterArr) {
-                if (this.x == eaterArr[i].x && this.y == eaterArr[i].y) {
-                    eaterArr.splice(i, 1);
-                    // break;
-                }
+        for (var i in eaterArr) {
+            if (this.x == eaterArr[i].x && this.y == eaterArr[i].y) {
+                eaterArr.splice(i, 1);
+                // break;
+            }
             // }
         }
     }

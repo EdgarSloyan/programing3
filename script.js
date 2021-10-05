@@ -3,7 +3,7 @@ var socket = io();
 function setup() {
 
 
-    var side = 10;
+    var side = 30;
 
     var matrix = [];
     let weath = 'summer'
@@ -50,7 +50,7 @@ function setup() {
                         fill("#4dffa6");
                     }
                 } else if (obj == 2) {
-                    fill("orange");
+                    fill("#FF4500");
                 } else if (obj == 0) {
                     fill('#acacac');
                 } else if (obj == 3) {
@@ -77,3 +77,12 @@ function addGrass() {
 function addGrassEater() {
     socket.emit("add grassEater")
 }   
+function addPredator() {
+    socket.emit("add Predator")
+}  
+function addEater() {
+    socket.emit("add Eater")
+}  
+function addMuler() {
+    socket.emit("add Muler")
+}  

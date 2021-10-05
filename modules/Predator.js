@@ -35,7 +35,7 @@ module.exports = class Predator extends LiveForm {
             this.y = y;
             this.x = x;
             let pr = new Predator(x, y);
-            PredatorArr.push(pr);
+            predatorArr.push(pr);
         }
     }
     move() {

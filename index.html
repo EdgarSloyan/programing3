@@ -35,7 +35,7 @@
                 <h1>Ծրագրավորում III Երևան</h1>
             </tr>
             <tr>
-                <h1>Անուն Ազգանուն</h1>
+                <h1>Edgar Avdoyan</h1>
             </tr>
             <tr>
                 <th scope="col">#</th>
@@ -48,36 +48,32 @@
             <tr>
                 <th scope="row">1</th>
                 <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td>Կանաչը խոտն է, որը բազմանում է 1 ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը</td>
                 <td id="grassCount"></td>
             </tr>
             <tr>
                 <th scope="row">2</th>
                 <td scope="row" style="background-color:orange;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>Նարնջագույնը խոտակերն է, որը բազմանում է 1 հատ խոտ ուտելուց հետո և մահանում է 10 հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է Predator-ը:</td>
                 <td id="grassEaterCount"></td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td scope="row" style="background-color:rgb(128, 0, 0);"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td>Կարմիրը բազմանում է 8 հատ խոտ ուտելուց հետո և մահանում է 3 հատ չուտելուց հետո, կամ երբ նրան ուտում է Eater-ը</td>
                 <td id="predatorCount"></td>
             </tr>
             <tr>
                 <th scope="row">4</th>
                 <td scope="row" style="background-color:rgb(4, 0, 255);"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>Կապույտը բազմանում է 6 հատ խոտ ուտելուց հետո և մահանում է 12 հատ չուտելուց հետո, կամ երբ նրան ուտում է Muler-ը</td>
                 <td id="eaterCount"></td>
             </tr>
             <tr>
                 <th scope="row">5</th>
                 <td scope="row" style="background-color:rgb(217, 255, 0);"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td>Դեղինը ուտւում է Eater և չի մահանում:</td>
                 <td id="mulerCount"></td>
             </tr>
         </tbody>
@@ -96,6 +92,15 @@
             </li>
             <li>
                 <button onclick="addGrassEater()">Add grass eater</button>
+            </li>
+            <li>
+                <button onclick="addPredator()">Add predator</button>
+            </li>
+            <li>
+                <button onclick="addEater()">Add eater</button>
+            </li>
+            <li>
+                <button onclick="addMuler()">Add muler</button>
             </li>
         </ul>
     </div>

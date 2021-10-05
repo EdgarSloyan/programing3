@@ -22,7 +22,7 @@ module.exports = class Muler extends LiveForm  {
         ];
     }
     eat()  {
-        let emptyCells = this.chooseCell(3);
+        let emptyCells = this.chooseCell(4);
         let newCell = random(emptyCells);
 
         if (newCell) {
